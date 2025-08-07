@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Credits - Me and My Team</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body, html {
+      height: 100%;
+      font-family: 'Arial', sans-serif;
+      overflow-y: scroll;
+      background: black;
+    }
+
+    /* 🎬 Background video */
+    .background-video {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover;
+      z-index: -1;
+    }
+
+    /* 🧊 Glassmorphism top bar */
+    .top-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 15px 20px;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(12px);
+      z-index: 100;
+    }
+
+    .top-bar .team-title {
+      color: white;
+      font-size: 20px;
+      font-weight: bold;
+      letter-spacing: 2px;
+    }
+
+    .top-bar .back-btn {
+      color: white;
+      text-decoration: none;
+      font-size: 16px;
+      border: 1px solid white;
+      padding: 6px 12px;
+      border-radius: 6px;
+      background: rgba(255,255,255,0.15);
+      transition: background 0.3s;
+    }
+
+    .top-bar .back-btn:hover {
+      background: rgba(255,255,255,0.3);
+    }
+
+    /* 🧊 Main overlay section */
+    .overlay {
+      position: relative;
+      z-index: 1;
+      width: 90%;
+      max-width: 600px;
+      margin: 100px auto 140px;
+      padding: 20px;
+      border-radius: 16px;
+      color: white;
+      text-align: center;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(14px);
+      animation: scroll-up 30s linear infinite;
+    }
+
+    @keyframes scroll-up {
+      0% { transform: translateY(100vh); }
+      100% { transform: translateY(-100%); }
+    }
+
+    h1 {
+      font-size: 32px;
+      margin-bottom: 40px;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.6);
+    }
+
+    .credit-item {
+      margin-bottom: 40px;
+    }
+
+    .credit-item img {
+      width: 200px;
+      border-radius: 12px;
+      box-shadow: 0 0 12px rgba(255, 255, 255, 0.3);
+      transition: transform 0.3s ease;
+    }
+
+    .credit-item img:hover {
+      transform: scale(1.05);
+    }
+
+    .credit-item p {
+      margin-top: 10px;
+      font-size: 18px;
+    }
+
+    /* 🎧 Audio Controls */
+    .controls {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 15px;
+      z-index: 10;
+    }
+
+    .controls button {
+      background: rgba(255, 255, 255, 0.2);
+      border: 1px solid white;
+      color: white;
+      padding: 10px 15px;
+      font-weight: bold;
+      border-radius: 8px;
+      cursor: pointer;
+      backdrop-filter: blur(6px);
+      transition: background 0.3s;
+    }
+
+    .controls button:hover {
+      background: rgba(255, 255, 255, 0.4);
+    }
+
+    audio { display: none; }
+  </style>
+</head>
+<body>
+
+  <!-- 🔙 Top Bar with Back Button and TEAM Title -->
+  <div class="top-bar">
+    <a href="index.html" class="back-btn">← Back</a>
+    <div class="team-title">TEAM</div>
+  </div>
+
+  <!-- 🎬 Background Video -->
+  <video class="background-video" autoplay loop muted playsinline>
+    <source src="Myvideo/1.mp4" type="video/mp4" />
+  </video>
+
+  <!-- 🔊 Background Music -->
+  <audio id="bg-music" autoplay loop>
+    <source src="Myvideo/1.mp4" type="video/mp4" />
+  </audio>
+
+  <!-- 🧊 Credit Overlay -->
+  <div class="overlay">
+    <h1>Me and My Team</h1>
+
+    <div class="credit-item">
+      <img src="1img/1.png" alt="Image 1">
+      <p>Mr. Billi - Founder</p>
+    </div>
+
+    <div class="credit-item">
+      <img src="1img/2.png" alt="Image 2">
+      <p>Mr. Meo - Sponsor</p>
+    </div>
+
+    <div class="credit-item">
+      <img src="1img/3.png" alt="Image 3">
+      <p>Mr. Meow - Co-Sponsor</p>
+    </div>
+
+    <div class="credit-item">
+      <img src="1img/4.png" alt="Image 4">
+      <p>Partner - Don’t Know</p>
+    </div>
+
+    <div class="credit-item">
+      <img src="1img/5.png" alt="Image 5">
+      <p>Design Head</p>
+    </div>
+
+    <div class="credit-item">
+      <img src="1img/6.png" alt="Image 6">
+      <p>Powered by CatNet</p>
+    </div>
+
+    <div class="credit-item">
+      <img src="1img/7.png" alt="Image 7">
+      <p>Marketing Team</p>
+    </div>
+
+    <p>— This project was created by me and my team —</p>
+  </div>
+
+  <!-- 🔈 Controls (optional, remove if not needed) -->
+  <div class="controls">
+    <button onclick="togglePlay()">Play/Pause</button>
+    <button onclick="toggleMute()">Mute/Unmute</button>
+  </div>
+
+  <script>
+    const bgMusic = document.getElementById('bg-music');
+
+    function togglePlay() {
+      if (bgMusic.paused) {
+        bgMusic.play();
+      } else {
+        bgMusic.pause();
+      }
+    }
+
+    function toggleMute() {
+      bgMusic.muted = !bgMusic.muted;
+    }
+
+    // Auto-play fallback
+    window.addEventListener('DOMContentLoaded', () => {
+      bgMusic.play().catch(() => {});
+      document.body.addEventListener('click', () => bgMusic.play(), { once: true });
+      document.body.addEventListener('touchstart', () => bgMusic.play(), { once: true });
+    });
+  </script>
+
+</body>
+</html>
